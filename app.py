@@ -40,7 +40,8 @@ with tab1:
     st.subheader("1. Shipping Volume Distribution")
     st.markdown("This chart shows the volume of Express vs Standard shipments.")
     count_chart = filtered_df['Express Flag'].value_counts().reset_index()
-    fig1 = px.bar(count_chart, x='index', y='Express Flag', labels={'index': 'Shipping Type', 'Express Flag': 'Order Count'}, text_auto=True)
+    count_chart.columns = ['Shipping Type', 'Order Count']
+    fig1 = px.bar(count_chart, x='Shipping Type', y='Order Count', text_auto=True)
     st.plotly_chart(fig1, use_container_width=True)
 
     st.subheader("2. Profit Margin Distribution by Shipping Type")
